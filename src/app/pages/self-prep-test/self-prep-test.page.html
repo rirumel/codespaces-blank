@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Interview Test</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div *ngIf="currentIndex < questions.length">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Question {{ currentIndex + 1 }}/{{ questions.length }}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ questions[currentIndex].text }}</p>
+
+        <!-- Text Answer -->
+        <ion-textarea 
+          [(ngModel)]="answers[currentIndex]" 
+          placeholder="Type your answer..."
+          (ngModelChange)="onInputChange('text')">
+        </ion-textarea>
+
+        <!-- OR Voice Answer -->
+        <ion-button color="primary" expand="block" (click)="toggleRecording()">
+          <ion-icon [name]="isRecording ? 'stop-circle' : 'mic'" slot="start"></ion-icon>
+          {{ isRecording ? 'Stop Recording' : 'Record Answer' }}
+        </ion-button>
+
+        <p *ngIf="answers[currentIndex]">{{ answers[currentIndex] }}</p>
+
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Navigation Buttons -->
+    <ion-button 
+      expand="block" 
+      [disabled]="!isAnswered" 
+      (click)="nextQuestion()">
+      {{ currentIndex === questions.length - 1 ? 'Submit Interview' : 'Next' }}
+    </ion-button>
+  </div>
+
+</ion-content>

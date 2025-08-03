@@ -1,0 +1,32 @@
+<ion-content fullscreen class="register-content">
+
+  <div class="logo-container">
+    <img src="assets/icon/prepify.png" alt="Prepify Logo" class="logo" />
+    <h1 class="app-name">Prepify</h1>
+  </div>
+
+  <div class="card-container">
+    <ion-card class="register-card">
+      <form (ngSubmit)="onRegister()" autocomplete="off">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="email" name="email" autocomplete="new-email" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password" name="password" autocomplete="new-password" required></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" type="submit" class="register-button">
+          Register
+        </ion-button>
+      </form>
+    </ion-card>
+  </div>
+
+  <ion-text class="register-text">
+    <p>Already have an account? <a routerLink="/login">Login here</a></p>
+  </ion-text>
+
+</ion-content>

@@ -1,0 +1,161 @@
+$primary-blue: #2a6bf7;
+$primary-blue-light: #3f85ff;
+$background-gradient-start: #e6f0ff;
+$card-bg-color: #f8fbff;
+
+ion-content.register-content {
+  --background: linear-gradient(135deg, #e6f0ff 0%, #ffffff 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-content.register-content .inner-scroll {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.register-content {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.card-container {
+  margin: 0 auto;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo-container .logo {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 8px rgba(42, 107, 247, 0.4));
+}
+
+.logo-container .app-name {
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: $primary-blue;
+  margin-top: 0.5rem;
+  letter-spacing: 2px;
+}
+
+.register-card {
+  width: 90%;
+  max-width: 450px;
+  background-color: $card-bg-color;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 20px rgba(42, 107, 247, 0.12);
+  margin: 0 auto;
+}
+
+.register-card ion-item {
+  background: transparent !important;       // no background
+  border: 2px solid $primary-blue;           // blue border (primary blue)
+  border-radius: 15px;                       // rounded corners
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;                        // add some left padding so label/input not too close
+
+  --background: transparent;
+  --border-color: transparent;
+  --border-width: 0;
+  --inner-border-width: 0;
+  --highlight-color-focused: transparent;
+  --highlight-color-invalid: transparent;
+  --highlight-color-valid: transparent;
+  box-shadow: none !important;
+}
+
+.register-card ion-item ion-label {
+  color: #1a2e7a;                           // dark blue label color
+  font-weight: 600;
+}
+
+.register-card ion-item ion-input {
+  color: #000080;                           // navy blue for input text
+  font-weight: 600;
+}
+
+/* Remove bottom border from ion-item (because we're using full border) */
+.register-card ion-item {
+  --border: transparent;                      // disable Ionic default bottom border
+  --background: transparent;
+}
+
+ion-button::part(native) {
+  background: transparent !important;
+  box-shadow: none !important;
+  --background: transparent !important;
+  --background-hover: transparent !important;
+  --background-activated: transparent !important;
+  --background-focused: transparent !important;
+}
+
+ion-button::part(native):hover,
+ion-button::part(native):focus,
+ion-button::part(native):active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.register-button {
+  background-color: $primary-blue;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 450px;
+  border: none;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+}
+
+.register-button:hover {
+  background-color: $primary-blue-light;
+}
+
+.register-text {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: rgba(42, 107, 247, 0.75);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.register-text a {
+  color: $primary-blue;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.register-text a:hover {
+  color: $primary-blue-light;
+  text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (min-width: 768px) {
+  .register-card {
+    padding: 2.5rem 3rem;
+  }
+
+  .logo-container .app-name {
+    font-size: 3.5rem;
+  }
+}

@@ -1,0 +1,203 @@
+$primary-blue: #2a6bf7;
+$primary-blue-light: #3f85ff;
+$background-gradient-start: #e6f0ff;
+$background-gradient-end: #ffffff;
+
+.home-toolbar {
+  /* Gradient background for header */
+  --background: linear-gradient(135deg, #dde7fc 0%, #d8e4ff 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  box-shadow: 0 2px 8px rgba(42, 107, 247, 0.1);
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-logo {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.text-title{
+  padding-left: 0;
+}
+
+.home-toolbar ion-title {
+  color: #1a237e; /* Darker blue for good contrast */
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.logout-button {
+  background: linear-gradient(135deg, #3f85ff 0%, #2a6bf7 100%);
+  color: #fff;
+  border-radius: 18px;
+  font-weight: 700;
+  padding: 0.5rem 1.3rem;
+  margin-right: 8px;
+  text-transform: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(42, 107, 247, 0.4);
+  border: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: linear-gradient(135deg, #2a6bf7 0%, #3f85ff 100%);
+  box-shadow: 0 6px 20px rgba(42, 107, 247, 0.6);
+}
+
+.logout-button ion-icon {
+  font-size: 1.2rem;
+}
+
+.home-content {
+  --background: linear-gradient(135deg, #e6f0ff 0%, #ffffff 100%);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-section {
+  text-align: center;
+
+  .welcome-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0d1b55;
+    margin: 0;
+  }
+
+  .welcome-tagline {
+    font-size: 1.1rem;
+    color: #3f85ff;
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+}
+
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.custom-card {
+  width: 100%;
+  border-radius: 20px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 8px 25px rgba(42, 107, 247, 0.12);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  ion-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    ion-card-title {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #0d1b55; /* Dark navy for strong contrast */
+      text-align: center;
+    }
+  }
+
+  ion-card-content {
+    font-size: 1rem;
+    color: #3a3a3a;
+    margin-top: 0.6rem;
+  }
+
+  .card-icon {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    margin-bottom: 0.6rem;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(42, 107, 247, 0.2);
+  }
+}
+
+.icon-wrapper {
+  background-color: #2a6bf7; // Darker shade of blue
+  padding: 0.75rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(42, 107, 247, 0.3);
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0; // Remove margin-bottom from earlier
+  }
+}
+
+// Optional: Adjust spacing in ion-card-header
+.custom-card ion-card-header {
+  gap: 16px;
+}
+
+.database-prep .icon-wrapper {
+  background-color: #f7a62a; // Orange for contrast
+}
+
+
+.disabled-card {
+  position: relative;
+  pointer-events: none; // disables click events
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.693);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-radius: 8px;
+    z-index: 10;
+    text-transform: uppercase;
+  }
+}
+
+
+/* Updated card background colors for better contrast */
+.self-prep {
+  background: #d1defb; /* Soft but noticeable light blue */
+  border-top: 5px solid #2a6bf7;
+}
+
+.database-prep {
+  background: #fff3d9; /* Warm light cream */
+  border-top: 5px solid #f7a62a;
+}
