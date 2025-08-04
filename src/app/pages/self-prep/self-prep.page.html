@@ -21,28 +21,32 @@
 <ion-content class="self-prep-content">
   <div class="card-container">
     <ion-card class="form-card">
+      <div class="form-description">
+  <p>Fuel your prep with real job info. The more you tell us, the sharper your practice gets!</p>
+</div>
+
       <form (ngSubmit)="generateQuestions()">
-        <ion-item>
-          <ion-label position="floating">Job Title</ion-label>
-          <ion-input [(ngModel)]="jobTitle" name="jobTitle" required></ion-input>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label position="floating">Location</ion-label>
-          <ion-input [(ngModel)]="location" name="location"></ion-input>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label position="floating">Job Description</ion-label>
-          <ion-textarea [(ngModel)]="jobDescription" name="jobDescription" required></ion-textarea>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label position="floating">Profile Requirement</ion-label>
-          <ion-textarea [(ngModel)]="profileRequirement" name="profileRequirement"></ion-textarea>
-        </ion-item>
-  
-        <ion-button *ngIf="!questionsReady" expand="block" type="submit" [disabled]="isLoading">
+        <ion-item class="custom-input">
+  <ion-label position="floating">Job Title</ion-label>
+  <ion-input [(ngModel)]="jobTitle" name="jobTitle" required></ion-input>
+</ion-item>
+
+<ion-item class="custom-input">
+  <ion-label position="floating">Location</ion-label>
+  <ion-input [(ngModel)]="location" name="location"></ion-input>
+</ion-item>
+
+<ion-item class="custom-textarea">
+  <ion-label position="floating">Job Description</ion-label>
+  <ion-textarea autoGrow="true" [(ngModel)]="jobDescription" name="jobDescription" required></ion-textarea>
+</ion-item>
+
+<ion-item class="custom-textarea">
+  <ion-label position="floating">Profile Requirement</ion-label>
+  <ion-textarea autoGrow="true" [(ngModel)]="profileRequirement" name="profileRequirement"></ion-textarea>
+</ion-item>
+
+        <ion-button *ngIf="!questionsReady" class="submit-button" expand="block" type="submit" [disabled]="isLoading">
           {{ isLoading ? 'Generating...' : 'Generate Questions' }}
         </ion-button>
       </form>

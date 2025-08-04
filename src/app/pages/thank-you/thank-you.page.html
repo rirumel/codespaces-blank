@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar class="thank-you-toolbar">
+    <ion-buttons slot="start">
+      <img src="assets/icon/prepify.png" alt="Prepify Logo" class="header-logo" />
+    </ion-buttons>
+
+    <ion-title class="text-title">Interview Complete</ion-title>
+
+    <ion-buttons slot="primary" class="center-home-button">
+      <ion-button fill="clear" routerLink="/home">
+        <ion-icon name="home-outline" slot="icon-only" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button class="logout-button" (click)="logout()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        Logout
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="thank-you-content">
+  <div class="card-container">
+    <ion-card class="thank-you-card">
+      <ion-card-header>
+        <ion-card-title class="header-text">🎯 Interview Completed</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="message-box">
+          <h2>Thank You!</h2>
+          <p>You’ve successfully completed your interview practice. Great job!</p>
+        </div>
+
+        <div class="emoji-feedback" *ngIf="!feedbackSubmitted">
+          <p>How was your experience?</p>
+          <div class="emoji-options">
+            <button (click)="submitFeedback('😄')">😄</button>
+            <button (click)="submitFeedback('😊')">😊</button>
+            <button (click)="submitFeedback('😐')">😐</button>
+            <button (click)="submitFeedback('😟')">😟</button>
+          </div>
+        </div>
+
+        <div class="thank-you-message" *ngIf="feedbackSubmitted">
+          🎉 Thanks for your feedback!  
+          <br />
+          Wishing you all the best with your <span class="prepify-word">Prepify</span> journey!
+        </div>
+
+        <div class="coming-soon">
+          💡 AI-assisted feedback is coming soon. Stay tuned!
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

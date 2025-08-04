@@ -1,42 +1,60 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Interview Test</ion-title>
+  <ion-toolbar class="self-prep-toolbar">
+    <ion-buttons slot="start">
+      <img src="assets/icon/prepify.png" alt="Prepify Logo" class="header-logo" />
+    </ion-buttons>
+
+    <ion-title class="text-title">Answer Each Question Thoughtfully</ion-title>
+
+    <ion-buttons slot="primary" class="center-home-button">
+      <ion-button fill="clear" routerLink="/home">
+        <ion-icon name="home-outline" slot="icon-only" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button class="logout-button" (click)="logout()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        Logout
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="self-prep-content">
 
-  <div *ngIf="currentIndex < questions.length">
-    <ion-card>
+  <div class="card-container" *ngIf="currentIndex < questions.length" @fade>
+    <ion-card class="question-card">
       <ion-card-header>
-        <ion-card-title>
-          Question {{ currentIndex + 1 }}/{{ questions.length }}
+        <ion-card-title class="question-count">
+          Question {{ currentIndex + 1 }} of {{ questions.length }}
         </ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        <p>{{ questions[currentIndex].text }}</p>
 
-        <!-- Text Answer -->
+      <ion-card-content>
+        <p class="question-text">{{ questions[currentIndex].text }}</p>
+
         <ion-textarea 
           [(ngModel)]="answers[currentIndex]" 
           placeholder="Type your answer..."
+          class="answer-textarea"
           (ngModelChange)="onInputChange('text')">
         </ion-textarea>
 
-        <!-- OR Voice Answer -->
-        <ion-button color="primary" expand="block" (click)="toggleRecording()">
+        <ion-button 
+          color="primary" 
+          expand="block" 
+          (click)="toggleRecording()" 
+          class="record-button">
           <ion-icon [name]="isRecording ? 'stop-circle' : 'mic'" slot="start"></ion-icon>
           {{ isRecording ? 'Stop Recording' : 'Record Answer' }}
         </ion-button>
-
-        <p *ngIf="answers[currentIndex]">{{ answers[currentIndex] }}</p>
-
       </ion-card-content>
     </ion-card>
 
-    <!-- Navigation Buttons -->
     <ion-button 
       expand="block" 
+      class="next-button"
       [disabled]="!isAnswered" 
       (click)="nextQuestion()">
       {{ currentIndex === questions.length - 1 ? 'Submit Interview' : 'Next' }}

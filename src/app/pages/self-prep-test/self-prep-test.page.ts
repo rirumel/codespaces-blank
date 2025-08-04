@@ -5,11 +5,32 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { v4 as uuidv4 } from 'uuid';
 import { runInInjectionContext, Injector } from '@angular/core';
 import { VoiceInputService } from 'src/app/services/voice-input.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/services/auth.service';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
+
 
 @Component({
   selector: 'app-self-prep-test',
   templateUrl: './self-prep-test.page.html',
   styleUrls: ['./self-prep-test.page.scss'],
+  animations: [
+    trigger('fade', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate('300ms ease-out', style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
   standalone: false
 })
 export class SelfPrepTestPage implements OnInit {
@@ -32,7 +53,9 @@ export class SelfPrepTestPage implements OnInit {
     private storage: AngularFireStorage,
     private ngZone: NgZone,
     private injector: Injector,
-    private voiceService: VoiceInputService
+    private voiceService: VoiceInputService,
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -42,6 +65,23 @@ export class SelfPrepTestPage implements OnInit {
     this.testID = nav?.extras.state?.['testID'] || '';
     this.userID = nav?.extras.state?.['userId'] || '';
     this.answers = new Array(this.questions.length).fill('');
+  }
+
+  logout(){
+    this.authService.logout()
+    .then(() => {
+      this.snackBar.open('Logged out successfully', 'Close', {
+        duration: 3000, // duration in ms
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+      });
+      this.router.navigate(['/login']);
+    })
+    .catch(error => {
+      this.snackBar.open('Logout failed. Please try again.', 'Close', {
+        duration: 3000
+      });
+    });
   }
 
   async toggleRecording() {
@@ -89,8 +129,13 @@ export class SelfPrepTestPage implements OnInit {
       this.isAnswered = this.answers[this.currentIndex]?.trim().length > 0;
       this.currentMode = null;
     } else {
-      await this.generateAIFeedback();
-      this.router.navigate(['/thank-you']);
+      // await this.generateAIFeedback(); //future implementation
+      this.router.navigate(['/thank-you'], {
+        state: {
+          userId: this.userID,
+          testID: this.testID
+        }
+      });
     }
   }
 

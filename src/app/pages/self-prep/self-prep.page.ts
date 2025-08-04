@@ -40,9 +40,14 @@ export class SelfPrepPage implements OnInit {
     private firebaseService: FirebaseService,
     private alertCtrl: AlertController,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit() {
+    this.jobTitle = '';
+    this.location = '';
+    this.jobDescription = '';
+    this.profileRequirement = '';
+    this.questionsReady = false;
     this.authSubscription = this.authService.getUser().subscribe(user => {
       this.userId = user?.uid ?? '';
     });
@@ -130,7 +135,8 @@ export class SelfPrepPage implements OnInit {
           text: 'Yes',
           handler: () => this.resetForm()
         }
-      ]
+      ],
+      cssClass: 'custom-alert'
     });
     await alert.present();
   }
@@ -148,19 +154,19 @@ export class SelfPrepPage implements OnInit {
 
   logout() {
     this.authService.logout()
-    .then(() => {
-      this.snackBar.open('Logged out successfully', 'Close', {
-        duration: 3000, // duration in ms
-        horizontalPosition: 'right',
-        verticalPosition: 'top',
+      .then(() => {
+        this.snackBar.open('Logged out successfully', 'Close', {
+          duration: 3000, // duration in ms
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        });
+        this.router.navigate(['/login']);
+      })
+      .catch(error => {
+        this.snackBar.open('Logout failed. Please try again.', 'Close', {
+          duration: 3000
+        });
       });
-      this.router.navigate(['/login']);
-    })
-    .catch(error => {
-      this.snackBar.open('Logout failed. Please try again.', 'Close', {
-        duration: 3000
-      });
-    });
   }
 
   navigateHome() {

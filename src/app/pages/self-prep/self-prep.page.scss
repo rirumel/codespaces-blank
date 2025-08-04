@@ -26,8 +26,9 @@ $background-gradient-end: #ffffff;
 .text-title {
   color: #1a237e;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   padding-left: 0;
+  line-height: 1.5;
 }
 
 .center-home-button {
@@ -79,6 +80,20 @@ $background-gradient-end: #ffffff;
     display: flex;
 }
 
+.form-description {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+
+  p {
+    font-size: 1.2rem;
+    color: #1a2e7a;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+}
+
+
 .form-card {
   width: 100%;
   max-width: 600px;
@@ -86,6 +101,24 @@ $background-gradient-end: #ffffff;
   border-radius: 20px;
   background-color: #f4f7ff;
   box-shadow: 0 4px 16px rgba(42, 107, 247, 0.1);
+
+  .custom-input, .custom-textarea{
+    border: 2px solid #2a6bf7;
+    border-radius: 15px;
+
+    --background: transparent;
+    --border-color: transparent;
+    --border-width: 0;
+    --inner-border-width: 0;
+    --highlight-color-focused: transparent;
+    --highlight-color-invalid: transparent;
+    --highlight-color-valid: transparent;
+    box-shadow: none !important;
+
+    .label-floating.sc-ion-label-md-h:not(.ion-color) {
+      color: #1a2e7a !important;
+    }
+  }
 
   ion-item {
     --background: transparent;
@@ -105,10 +138,45 @@ $background-gradient-end: #ffffff;
     margin-top: 1.2rem;
   }
 
+  .submit-button{
+    --border-radius: 15px;
+    --color: #fff;
+    font-weight: 600;
+  }
+
   .action-buttons {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+
+    ion-button{
+      flex: 1;
+      min-width: 120px;
+      --border-radius: 15px;
+    }
+
+    ion-button::part(native){
+      color: #fff !important;
+      font-weight: 600;
+    }
   }
+}
+
+::ng-deep .custom-alert .alert-wrapper {
+  background: #fff !important;
+  color: #2a6bf7 !important;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(42, 107, 247, 0.15);
+}
+
+::ng-deep .custom-alert .alert-title{
+  color: #1a237e !important;
+  font-weight: 600;
+}
+
+::ng-deep .custom-alert .alert-message,
+::ng-deep .custom-alert .alert-button{
+  color: #2a6bf7 !important;
 }
